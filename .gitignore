@@ -160,5 +160,5 @@ cython_debug/
 #.idea/
 
 # vim
-Sessions.vim
+Session.vim
 
