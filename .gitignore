@@ -162,3 +162,5 @@ cython_debug/
 # vim
 Session.vim
 
+# Credentials
+.credentials/
