@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import base64
+
 import pytest
 
 from src.credentials import Credentials
@@ -28,3 +30,10 @@ def test_load_bad_file() -> None:
         credentials.load_credentials(file)
     output_error = error.value.args[0].lower()
     assert expected_error in output_error
+
+
+def test_generate_key() -> None:
+    credentials = Credentials("mock")
+    output = credentials.generate_new_token_key()
+    assert isinstance(output, bytes)
+    base64.urlsafe_b64decode(output)

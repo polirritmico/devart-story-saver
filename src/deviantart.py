@@ -3,19 +3,22 @@
 
 from oauthlib.oauth2 import Client
 
+from src.oauth import DeviantArtOauth
+
 
 class Deviantart:
     """
     Docs: https://www.deviantart.com/developers/authentication
     """
 
-    base_url = "https://www.deviantart.com"
-    client_id: str
-    client_secret: str
+    oauth: DeviantArtOauth
 
     def __init__(self, client_id: str, client_secret: str):
-        self.client_id = client_id
-        self.client_secret = client_secret
+        self.oauth = DeviantArtOauth(
+            client_id,
+            client_secret,
+            "https://polirritmico.github.io/devart-story-saver/oauth-redirect.html",
+        )
 
     def request_user_auth(self):
         endpoint = "/oauth2/authorize"
